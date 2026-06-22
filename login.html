@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GrantBridge | Login</title>
+    <meta name="description" content="Log in to your GrantBridge account." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="auth-body">
+    <div class="auth-shell">
+      <div class="auth-card">
+        <a class="brand auth-brand" href="index.html">GrantBridge</a>
+        <h1>Welcome back</h1>
+        <p>Access your dashboard, applications, and funding updates.</p>
+
+        <form class="auth-form">
+          <label>
+            Email address
+            <input type="email" placeholder="you@example.com" required />
+          </label>
+
+          <label>
+            Password
+            <input type="password" placeholder="Enter your password" required />
+          </label>
+
+          <div class="form-row">
+            <label class="checkbox-row">
+              <input type="checkbox" />
+              <span>Remember me</span>
+            </label>
+            <a href="#">Forgot password?</a>
+          </div>
+
+          <button class="btn btn-primary auth-submit" type="submit">Log In</button>
+        </form>
+
+        <p class="auth-switch">
+          Don’t have an account?
+          <a href="signup.html">Create one</a>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

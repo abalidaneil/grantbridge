@@ -11,13 +11,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    $stmt = $pdo->prepare('SELECT id, full_name, password_hash FROM users WHERE email = ?');
+    $admin_stmt = $pdo->prepare('SELECT id, full_name, password_hash FROM admin_accounts WHERE email = ?');
+    $admin_stmt->execute([$email]);
+    $admin = $admin_stmt->fetch();
+
+    if ($admin && password_verify($password, $admin['password_hash'])) {
+        $_SESSION['user_id'] = (int) $admin['id'];
+        $_SESSION['user_name'] = $admin['full_name'];
+        $_SESSION['user_role'] = 'admin';
+        $_SESSION['admin_id'] = (int) $admin['id'];
+        header('Location: dashboard.php');
+        exit;
+    }
+
+    $stmt = $pdo->prepare('SELECT id, full_name, password_hash, role FROM users WHERE email = ?');
     $stmt->execute([$email]);
     $user = $stmt->fetch();
 
     if ($user && password_verify($password, $user['password_hash'])) {
         $_SESSION['user_id'] = (int) $user['id'];
         $_SESSION['user_name'] = $user['full_name'];
+        $_SESSION['user_role'] = $user['role'] ?? 'user';
+        unset($_SESSION['admin_id']);
         header('Location: dashboard.php');
         exit;
     }

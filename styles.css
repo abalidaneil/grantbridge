@@ -543,7 +543,8 @@ a {
 }
 
 .donation-form select,
-.donation-form textarea {
+.donation-form textarea,
+.donation-form input[type="file"] {
   width: 100%;
   padding: 12px 14px;
   border-radius: 12px;
@@ -551,10 +552,12 @@ a {
   font: inherit;
   outline: none;
   resize: vertical;
+  background: white;
 }
 
 .donation-form select:focus,
-.donation-form textarea:focus {
+.donation-form textarea:focus,
+.donation-form input[type="file"]:focus {
   border-color: var(--primary);
   box-shadow: 0 0 0 3px rgba(45, 108, 223, 0.14);
 }
@@ -581,6 +584,48 @@ a {
   color: var(--mute);
 }
 
+.helper-text {
+  margin: -6px 0 0;
+  color: var(--mute);
+  font-size: 0.92rem;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 20px;
+}
+
+.profile-grid textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  font: inherit;
+  outline: none;
+  resize: vertical;
+}
+
+.profile-grid textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(45, 108, 223, 0.14);
+}
+
+.admin-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.admin-actions select {
+  min-width: 140px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  font: inherit;
+}
+
 @media (max-width: 900px) {
   .hero-grid,
   .card-grid,
@@ -605,7 +650,8 @@ a {
   .footer-content,
   .summary-grid,
   .dashboard-grid,
-  .donation-grid {
+  .donation-grid,
+  .profile-grid {
     grid-template-columns: 1fr;
     display: grid;
   }

@@ -7,6 +7,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $user_name = htmlspecialchars($_SESSION['user_name'] ?? 'User', ENT_QUOTES, 'UTF-8');
+$is_admin = (($_SESSION['user_role'] ?? 'user') === 'admin');
 
 $stmt = $pdo->query('SELECT id, title, category, amount FROM grant_opportunities ORDER BY id ASC');
 $grants = $stmt->fetchAll();
@@ -31,10 +32,14 @@ $activityFeed = [
         <nav class="dashboard-nav">
           <a class="brand" href="index.html">GrantBridge</a>
           <div class="dashboard-nav-links">
-            <a href="#">Overview</a>
-            <a href="#">Grants</a>
-            <a href="#">Donations</a>
-            <a href="#">Activity</a>
+            <a href="dashboard.php">Overview</a>
+            <a href="apply_grant.php">Apply for Grant</a>
+            <a href="withdrawal.php">Withdrawal</a>
+            <a href="donations.php">Donations</a>
+            <a href="profile.php">Profile</a>
+            <?php if ($is_admin): ?>
+              <a href="admin.php">Admin</a>
+            <?php endif; ?>
           </div>
           <a class="btn btn-secondary" href="logout.php">Log Out</a>
         </nav>

@@ -18,14 +18,13 @@ $admin_success = $_SESSION["admin_success"] ?? "";
 unset($_SESSION["admin_error"], $_SESSION["admin_success"]);
 
 $applications_stmt = $pdo->query(
-    'SELECT a.id, a.amount, a.status, a.notes, a.submitted_at, u.full_name AS applicant_name, g.title AS grant_title '
-    . 'FROM applications a '
-    . 'JOIN users u ON u.id = a.user_id '
-    . 'JOIN grant_opportunities g ON g.id = a.grant_id '
-    . 'ORDER BY a.submitted_at DESC'
+    "SELECT a.id, a.amount, a.status, a.notes, a.submitted_at, u.full_name AS applicant_name, g.title AS grant_title " .
+        "FROM applications a " .
+        "JOIN users u ON u.id = a.user_id " .
+        "JOIN grant_opportunities g ON g.id = a.grant_id " .
+        "ORDER BY a.submitted_at DESC",
 );
 $applications = $applications_stmt->fetchAll();
-
 
 $withdrawals_stmt = $pdo->query(
     "SELECT w.id, w.amount, w.status, w.created_at, w.account_holder, w.bank_name, w.account_number, u.full_name AS applicant_name " .
@@ -54,6 +53,7 @@ $withdrawals = $withdrawals_stmt->fetchAll();
           </div>
         </nav>
 
+        <!--would like this to be a side bar insted of a nav bar-->
         <div class="dashboard-top">
           <div>
             <span class="eyebrow">Admin panel</span>

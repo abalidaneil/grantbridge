@@ -13,6 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $password === "" ||
         $confirm_password === ""
     ) {
+        // changed all to a message for the user since most people dont check urls
         $_SESSION["admin_error"] = "Please complete all fields.";
         header("Location: create_admin.php");
         exit();
